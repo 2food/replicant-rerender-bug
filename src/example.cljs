@@ -7,7 +7,8 @@
 (defn alert [{:keys [content remove] :as alert}]
   (when alert
     [:div
-     {:style {:position    "fixed"
+     {:replicant/key "alert"
+      :style {:position    "fixed"
               :top         "5rem"
               :right       "5%"
               :margin-left "5%"
@@ -25,13 +26,6 @@
        "Remove"]
       [:div content]]]))
 
-(defn busy-wait-10ms []
-  (let [start (.now js/Date)
-        target (+ start 10)]
-    (loop []
-      (when (< (.now js/Date) target)
-        (recur)))))
-
 (defn page [store]
   (let [data @store]
     [:div
@@ -42,8 +36,7 @@
                             [:state/assoc-in [:alert] {:content "Alert!"
                                                        :remove  [[:state/assoc-in [:alert] nil]]}]]}}
       "Click me"]
-     [:pre
-      (str data)]]))
+     [:pre (str data)]]))
 
 (def store (atom {}))
 
