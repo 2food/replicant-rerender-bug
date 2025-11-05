@@ -30,12 +30,12 @@
   (let [data @store]
     [:div
      (alert (:alert data))
-     (map (fn [text] [:span text " "]) ["list" "of" "things"])
      [:br]
      [:button {:on {:click [[:state/assoc-in [:alert] nil]
                             [:state/assoc-in [:alert] {:content "Alert!"
                                                        :remove  [[:state/assoc-in [:alert] nil]]}]]}}
       "Click me"]
+     [:p "State:"]
      [:pre (str data)]]))
 
 (def store (atom {}))

@@ -2,12 +2,12 @@
   (:require [shadow.cljs.devtools.server :as shadow-server]
             [shadow.cljs.devtools.api :as shadow]))
 
-
+(defn start-dev! []
+  (shadow-server/start!)
+  (shadow/dev :app))
 
 (comment
-  (shadow-server/start!)
-
-  (shadow/dev :app)
+  (start-dev!)
 
   (shadow-server/stop!)
   )
