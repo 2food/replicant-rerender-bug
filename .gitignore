@@ -5,3 +5,4 @@
 .nrepl-port
 
 *.iml
+/resources/public/js/
